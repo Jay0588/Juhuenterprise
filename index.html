@@ -467,26 +467,26 @@
   <!-- Projects -->
   <section id="projects">
     <h2>Our Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card" data-key="paint" tabindex="0" role="button" aria-pressed="false" aria-label="View details of Exterior Paint Renovation project">
+    <div class="projects-grid" role="list">
+      <div class="project-card" data-key="paint" tabindex="0" role="listitem button" aria-pressed="false" aria-label="View details of Exterior Paint Renovation project">
         <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Exterior Paint Renovation" />
         <div class="client">Client: Shree Plaza Apartments</div>
         <h3>Exterior Paint Renovation</h3>
         <p>Revamping building exteriors with high-quality, weather-resistant paints.</p>
       </div>
-      <div class="project-card" data-key="waterproofing" tabindex="0" role="button" aria-pressed="false" aria-label="View details of Basement Waterproofing project">
+      <div class="project-card" data-key="waterproofing" tabindex="0" role="listitem button" aria-pressed="false" aria-label="View details of Basement Waterproofing project">
         <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Basement Waterproofing" />
         <div class="client">Client: Vijay Construction</div>
         <h3>Basement Waterproofing</h3>
         <p>Advanced solutions for leakage and damp prevention in basements.</p>
       </div>
-      <div class="project-card" data-key="granite" tabindex="0" role="button" aria-pressed="false" aria-label="View details of Granite Floor Application project">
+      <div class="project-card" data-key="granite" tabindex="0" role="listitem button" aria-pressed="false" aria-label="View details of Granite Floor Application project">
         <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80" alt="Granite Floor Application" />
         <div class="client">Client: City Mall</div>
         <h3>Granite Floor Application</h3>
         <p>Premium quality granite installation for commercial and residential projects.</p>
       </div>
-      <div class="project-card" data-key="application" tabindex="0" role="button" aria-pressed="false" aria-label="View details of Industrial Coating Application project">
+      <div class="project-card" data-key="application" tabindex="0" role="listitem button" aria-pressed="false" aria-label="View details of Industrial Coating Application project">
         <img src="https://images.unsplash.com/photo-1549921296-a0108577e609?auto=format&fit=crop&w=400&q=80" alt="Industrial Coating Application" />
         <div class="client">Client: DVS Engineering</div>
         <h3>Industrial Coating Application</h3>
@@ -746,7 +746,7 @@
     }
   });
 
-  // Optional: Simple form submission handling (demo only)
+  // Simple form submission handling (demo only)
   const form = document.querySelector('#contact form');
   form.addEventListener('submit', event => {
     event.preventDefault();
