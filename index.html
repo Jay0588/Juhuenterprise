@@ -288,55 +288,6 @@
       color: #394a66;
       line-height: 1.6;
     }
-    /* Testimonials section */
-    #testimonials {
-      background: #f5f8fa;
-      padding-top: 3em;
-      padding-bottom: 3em;
-    }
-    .testimonials-group {
-      max-width: 960px;
-      margin: 0 auto;
-      display: flex;
-      gap: 2em;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .testimonial {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-      padding: 1.8em 1.6em 2em;
-      margin-bottom: 1em;
-      flex: 1 1 300px;
-      max-width: 360px;
-      font-style: normal;
-      color: #2a374d;
-      font-size: 1.05em;
-      line-height: 1.5;
-      user-select:none;
-    }
-    .testimonial blockquote {
-      quotes: "“" "”";
-      margin: 0 0 0.8em;
-      font-style: italic;
-      font-weight: 500;
-      color: #19334d;
-    }
-    .testimonial blockquote:before {
-      content: open-quote;
-    }
-    .testimonial blockquote:after {
-      content: close-quote;
-    }
-    .testimonial .client {
-      font-style: normal;
-      font-weight: 700;
-      color: #667;
-      font-size: 0.95em;
-      text-align: right;
-      user-select:none;
-    }
     /* Contact section */
     #contact form {
       max-width: 460px;
@@ -413,10 +364,6 @@
         flex-direction: column;
         gap: 2.4em;
       }
-      .testimonials-group {
-        flex-direction: column;
-        max-width: 90vw;
-      }
     }
     @media (max-width: 600px) {
       nav ul li {
@@ -448,7 +395,7 @@
         <li><a href="#projects" class="active">Projects</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
+        <!-- Testimonial nav item removed -->
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -543,31 +490,6 @@
     <h2>About Us</h2>
     <div class="about-box" tabindex="0">
       With over 10 years of experience, <b>ABC Solutions</b> delivers high-quality finishing and protection services for homes and businesses. Our expert team ensures every project is handled with professionalism and care. We are committed to meeting timelines, maintaining safety, and exceeding client expectations.
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section id="testimonials">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonials-group">
-      <div class="testimonial" tabindex="0">
-        <blockquote>
-          "ABC Solutions transformed our building exterior and delivered the project on time with top-notch quality."
-        </blockquote>
-        <span class="client">– Priya S., Building Owner</span>
-      </div>
-      <div class="testimonial" tabindex="0">
-        <blockquote>
-          "The waterproofing work was excellent and has solved our leakage issues. Highly recommended!"
-        </blockquote>
-        <span class="client">– Akash Mehta, Civil Engineer</span>
-      </div>
-      <div class="testimonial" tabindex="0">
-        <blockquote>
-          "Very professional team for granite application. The finishes exceeded our expectations."
-        </blockquote>
-        <span class="client">– R. Sharma, Retail Owner</span>
-      </div>
     </div>
   </section>
 
