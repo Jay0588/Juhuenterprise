@@ -6,7 +6,7 @@
   <title>Juhu Enterprise | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet" />
   <style>
-    /* Base and typography */
+    /* Base styles */
     body {
       font-family: 'Nunito', sans-serif;
       background: #e8f0f7;
@@ -29,11 +29,8 @@
     a:focus,
     button:focus,
     input:focus,
-    textarea:focus {
-      outline: 3px solid #f9d342;
-      outline-offset: 2px;
-    }
-    button:focus-visible {
+    textarea:focus,
+    summary:focus {
       outline: 3px solid #f9d342;
       outline-offset: 2px;
     }
@@ -176,151 +173,78 @@
       letter-spacing: 0.07em;
       font-size: 2rem;
     }
-    h3 {
-      color: #244a54;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      margin-bottom: 0.6em;
-      font-size: 1.4rem;
-    }
-    /* Project groups */
-    .project-group {
-      margin-bottom: 2.8em;
-    }
-    .project-group ul {
-      list-style: none;
-      padding-left: 0;
-      margin-left: 1.2em;
-    }
-    .project-group ul li {
-      margin: 0.4em 0;
-    }
-    /* Project buttons */
-    .project-btn {
-      background: none;
-      border: none;
-      color: #336699;
+    /* Projects accordion */
+    details {
+      background: #ffffff;
+      border-radius: 16px;
+      margin-bottom: 1.3em;
+      padding: 1em 1.5em;
+      box-shadow: 0 6px 18px rgba(249,211,66,0.2);
       font-family: 'Nunito', sans-serif;
-      font-size: 1.1rem;
       cursor: pointer;
-      padding: 0.25em 0.2em;
-      border-radius: 10px;
-      transition: background-color 0.25s, color 0.25s;
-      user-select: none;
-      text-align: left;
-      width: 100%;
-      max-width: 320px;
     }
-    .project-btn:hover,
-    .project-btn:focus {
-      background-color: #f9d342;
-      color: #244a54;
-      outline: none;
-    }
-    /* Overlay & Expanded project */
-    #overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(36,74,84,0.7);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 9000;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    }
-    #overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-    #expandedProject {
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%) scale(0.85);
-      width: 90vw; max-width: 930px; max-height: 90vh;
-      overflow-y: auto;
-      background: #fefcf9;
-      border-radius: 24px;
-      box-shadow: 0 14px 38px rgba(249,211,66,0.35);
-      padding: 2.5em 3em 3.5em;
-      opacity: 0;
-      pointer-events: none;
-      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
-      z-index: 10000;
-      outline: none;
-      font-family: 'Nunito', sans-serif;
-    }
-    #expandedProject.active {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
-      pointer-events: all;
-    }
-    #expandedProject h2 {
-      margin-top: 0;
-      color: #244a54;
-      font-family: 'Poppins', sans-serif;
+    summary {
       font-weight: 700;
-      font-size: 2.2rem;
-      margin-bottom: 0.2em;
+      font-size: 1.32rem;
+      color: #244a54;
+      outline-offset: 4px;
+      list-style: none;
     }
-    #expandedProject p {
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    summary:before {
+      content: '+';
+      display: inline-block;
+      margin-right: 1em;
+      font-size: 1.2rem;
+      color: #f9d342;
+      transition: transform 0.3s ease;
+    }
+    details[open] > summary:before {
+      content: '−';
+      transform: rotate(180deg);
+    }
+    .project-summary {
+      margin: 1em 0 0 0;
       color: #506773;
-      font-size: 1.05rem;
-      line-height: 1.6;
-      margin-bottom: 1.2em;
-      white-space: pre-line;
+      font-size: 1.1rem;
     }
-    #expandedProject #expandedClient {
-      font-style: italic;
-      color: #7a8a9e;
-      margin-bottom: 1.6em;
-      font-size: 1rem;
-    }
-    #expandedProject .gallery {
+    .project-images {
+      margin-top: 1rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
-      gap: 1.3em;
-      margin-top: 1.8em;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
     }
-    #expandedProject .gallery img {
-      width: 100%;
-      border-radius: 18px;
-      box-shadow: 0 7px 20px rgba(249,211,66,0.3);
-      height: 140px;
+    .project-images.single-image {
+      display: block;
+      text-align: center;
+    }
+    .project-images.single-image img {
+      width: 80%;
+      border-radius: 12px;
       object-fit: cover;
       cursor: zoom-in;
       user-select: none;
+      max-height: 70vh;
       transition: transform 0.3s ease;
     }
-    #expandedProject .gallery img:hover,
-    #expandedProject .gallery img:focus {
+    .project-images img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      cursor: zoom-in;
+      user-select: none;
+      max-height: 140px;
+      transition: transform 0.3s ease;
+    }
+    .project-images img:hover,
+    .project-images img:focus {
       transform: scale(1.07);
       outline: none;
     }
-    #expandedProject .close-btn {
-      position: absolute;
-      top: 1.6em;
-      right: 1.6em;
-      background: #f9d342;
-      color: #244a54;
-      border: none;
-      border-radius: 50%;
-      font-family: 'Poppins', sans-serif;
-      width: 36px;
-      height: 36px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      line-height: 1;
-      user-select: none;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    }
-    #expandedProject .close-btn:hover,
-    #expandedProject .close-btn:focus {
-      background: #e6bc00;
-      outline: none;
-    }
-    /* Services */
+
+    /* Our Services section (restored) */
     #services .services-list {
       display: flex;
       flex-wrap: wrap;
@@ -378,8 +302,7 @@
       line-height: 1.75;
       border: 1.5px solid #f9d342aa;
     }
-
-    /* Business card styles (replacing contact section) */
+    /* Business card */
     .business-card {
       width: 400px;
       border-radius: 12px;
@@ -442,12 +365,11 @@
       font-size: 14px;
       color: #f1c40f;
     }
-
     /* Footer */
     footer {
       background: #f9d342;
       color: #244a54;
-      text-align: center;        /* Centers footer text */
+      text-align: center;
       font-weight: 700;
       padding: 1.6rem 1rem;
       font-size: 0.95rem;
@@ -457,19 +379,21 @@
       margin-top: auto;
       user-select: none;
     }
-
     /* Responsive */
     @media (max-width: 900px) {
-      .services-list {
-        flex-direction: column;
-        gap: 2.7em;
-      }
       nav ul {
         max-width: 100%;
         justify-content: center;
       }
       .header-bar {
         justify-content: space-around;
+      }
+      .services-list {
+        flex-direction: column;
+        gap: 2.7em;
+      }
+      .project-images {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       }
     }
     @media (max-width: 600px) {
@@ -487,18 +411,11 @@
       main {
         padding: 1.5em 1em 3.5em;
       }
-      .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.8em;
-      }
       .hero-content h1 {
         font-size: 2.4rem;
       }
       .hero-content p {
         font-size: 1.15rem;
-      }
-      #expandedProject {
-        padding: 2em 1.5em 2.5em;
       }
       .btn-main {
         width: 100%;
@@ -511,9 +428,6 @@
         max-width: 400px;
         margin: 1.5em auto 0 auto;
       }
-      .project-btn {
-        max-width: 100%;
-      }
       .logo {
         height: 72px;
       }
@@ -522,19 +436,18 @@
 </head>
 <body>
   <header>
-    <div class="header-bar">
+    <div class="header-bar" role="banner">
       <img
         src="https://i.ibb.co/nN9QvKy1/generated-image.png"
         alt="Juhu Enterprise Logo"
         class="logo"
         tabindex="0"
       />
-      <nav>
+      <nav role="navigation" aria-label="Primary navigation">
         <ul>
           <li><a href="#projects" class="active" tabindex="0">Projects</a></li>
           <li><a href="#services" tabindex="0">Services</a></li>
           <li><a href="#about" tabindex="0">About</a></li>
-          <!-- Contact nav removed as section replaced -->
         </ul>
       </nav>
     </div>
@@ -549,62 +462,66 @@
   </section>
 
   <main>
-    <!-- Projects -->
     <section id="projects" tabindex="-1" aria-label="Our Projects">
       <h2>Our Projects</h2>
 
-      <!-- Granite, Quartz & Marble -->
-      <div class="project-group">
-        <h3>Granite, Quartz, & Marble Projects (Done & Ongoing)</h3>
-        <ul>
-          <li><button class="project-btn" data-key="pahaliPazuri">Pahali Pazuri</button></li>
-          <li><button class="project-btn" data-key="sandyShore">Sandy Shore</button></li>
-          <li><button class="project-btn" data-key="footprints">Footprints</button></li>
-          <li><button class="project-btn" data-key="residential">Residential</button></li>
-          <li><button class="project-btn" data-key="sultanPalace">Sultan Palace</button></li>
-          <li><button class="project-btn" data-key="petals">Petals</button></li>
-          <li><button class="project-btn" data-key="polyHeights">Poly Heights</button></li>
-          <li><button class="project-btn" data-key="hyperland">Hyperland</button></li>
-        </ul>
-      </div>
+      <details>
+        <summary tabindex="0">Pahali Pazuri</summary>
+        <p class="project-summary">Granite & Quartz project at the beautiful Pahali Pazuri site, both completed and ongoing projects.</p>
+        <div class="project-images single-image" aria-label="Pahali Pazuri images">
+          <img src="https://i.ibb.co/3yYqkq4G/pahali-pazuri.jpg" alt="Pahali Pazuri granite and quartz work" />
+        </div>
+      </details>
 
-      <!-- Painting -->
-      <div class="project-group">
-        <h3>Painting Projects</h3>
-        <ul>
-          <li><button class="project-btn" data-key="nyaliBazaar">Nyali Bazaar</button></li>
-          <li><button class="project-btn" data-key="dolphinHotel">Dolphin Hotel</button></li>
-          <li><button class="project-btn" data-key="sandyShorePaint">Sandy Shore</button></li>
-          <li><button class="project-btn" data-key="hyperlandPaint">Hyperland</button></li>
-          <li><button class="project-btn" data-key="twigaVillas">Twiga Villas</button></li>
-          <li><button class="project-btn" data-key="mufudhalPark">Mufudhal Park</button></li>
-        </ul>
-      </div>
+      <details>
+        <summary tabindex="0">Sandy Shore</summary>
+        <p class="project-summary">Ongoing marble and granite flooring project at Sandy Shore.</p>
+        <div class="project-images" aria-label="Sandy Shore images">
+          <img src="https://i.ibb.co/0yKxHvDC/Sandy-Shore-bfr.jpg" alt="Sandy Shore before project" />
+          <img src="https://i.ibb.co/Q7qG84cb/Sandy-Shore.jpg" alt="Sandy Shore project work" />
+          <img src="https://i.ibb.co/xqtLvvC3/sandy-shore-1.jpg" alt="Sandy Shore detail 1" />
+          <img src="https://i.ibb.co/S7tnNRMD/sandy-shore-2.jpg" alt="Sandy Shore detail 2" />
+          <img src="https://i.ibb.co/wZbNbgw9/sandy-shore-aft.jpg" alt="Sandy Shore after project" />
+        </div>
+      </details>
 
-      <!-- Waterproofing -->
-      <div class="project-group">
-        <h3>Waterproofing Projects</h3>
-        <ul>
-          <li><button class="project-btn" data-key="undergroundTanks">Underground Tanks</button></li>
-          <li><button class="project-btn" data-key="terraces">Terraces</button></li>
-          <li><button class="project-btn" data-key="swimmingPools">Swimming Pools</button></li>
-          <li><button class="project-btn" data-key="bathrooms">Bathrooms</button></li>
-          <li><button class="project-btn" data-key="entireBasementArea">Entire Basement Area</button></li>
-          <li><button class="project-btn" data-key="grainBulk">Grain Bulk</button></li>
-          <li><button class="project-btn" data-key="nyaliBazaarWp">Nyali Bazaar</button></li>
-          <li><button class="project-btn" data-key="footprintsWp">Footprints</button></li>
-          <li><button class="project-btn" data-key="prideInnParadiseHotel">Pride Inn Paradise Hotel</button></li>
-          <li><button class="project-btn" data-key="sunsetParadiseHotel">Sunset Paradise Hotel</button></li>
-          <li><button class="project-btn" data-key="dolphinHotelWp">Dolphin Hotel</button></li>
-          <li><button class="project-btn" data-key="silverPalmResorts">Silver Palm Resorts</button></li>
-          <li><button class="project-btn" data-key="sandyShoreWp">Sandy Shore</button></li>
-          <li><button class="project-btn" data-key="superiorHomes">Superior Homes</button></li>
-          <li><button class="project-btn" data-key="pahaliPazuriWp">Pahali Pazuri</button></li>
-        </ul>
-      </div>
+      <details>
+        <summary tabindex="0">Residential</summary>
+        <p class="project-summary">Various residential granite, quartz, and marble projects.</p>
+        <div class="project-images single-image" aria-label="Residential images">
+          <img src="https://i.ibb.co/JWrL3K05/residentials.jpg" alt="Residential buildings project" />
+        </div>
+      </details>
+
+      <details>
+        <summary tabindex="0">Nyali Bazaar</summary>
+        <p class="project-summary">Painting and waterproofing projects at Nyali Bazaar.</p>
+        <div class="project-images" aria-label="Nyali Bazaar images">
+          <img src="https://i.ibb.co/YT7BtrYH/Nyali-Baazar.jpg" alt="Nyali Bazaar front view" />
+          <img src="https://i.ibb.co/8Lf9rStb/nyali-baazar-paintwork.jpg" alt="Nyali Bazaar painting work" />
+        </div>
+      </details>
+
+      <details>
+        <summary tabindex="0">Dolphin Hotel</summary>
+        <p class="project-summary">Professional painting and waterproofing for Dolphin Hotel.</p>
+        <div class="project-images single-image" aria-label="Dolphin Hotel painting image">
+          <img src="https://i.ibb.co/4wKSFVFY/Dolphin.jpg" alt="Dolphin Hotel exterior painting and waterproofing" />
+        </div>
+        <div class="project-images single-image" aria-label="Dolphin Hotel waterproofing image" style="margin-top: 1rem;">
+          <img src="https://i.ibb.co/XnSGVWw/dolphin-waterproofing.jpg" alt="Dolphin Hotel waterproofing work" />
+        </div>
+      </details>
+
+      <details>
+        <summary tabindex="0">Butterfly Park</summary>
+        <p class="project-summary">Specialized painting and maintenance at Butterfly Park.</p>
+        <div class="project-images single-image" aria-label="Butterfly Park images">
+          <img src="https://i.ibb.co/YTqrfKh7/butterfly-park.jpg" alt="Butterfly Park painting exterior" />
+        </div>
+      </details>
     </section>
 
-    <!-- Services -->
     <section id="services" tabindex="-1" aria-label="Our Services">
       <h2>Our Services</h2>
       <div class="services-list" role="list">
@@ -647,7 +564,6 @@
       </div>
     </section>
 
-    <!-- About Us -->
     <section id="about" tabindex="-1" aria-label="About Us">
       <h2>About Us</h2>
       <div class="about-box" tabindex="0">
@@ -660,7 +576,6 @@
       </div>
     </section>
 
-    <!-- Business Card replacing Contact -->
     <div class="business-card" tabindex="0" aria-label="Business card for Juhu Enterprise">
       <h1>Juhu Enterprise</h1>
       <h2>Specialised in: Applying & Supplying of<br>Paint / Granite & Waterproofing</h2>
@@ -673,151 +588,5 @@
   <footer>
     &copy; 2025 Juhu Enterprise. All rights reserved.
   </footer>
-
-  <!-- Overlay & Expanded project -->
-  <div id="overlay" tabindex="-1"></div>
-  <div
-    id="expandedProject"
-    aria-modal="true"
-    role="dialog"
-    aria-labelledby="expandedTitle"
-    aria-describedby="expandedDesc"
-    tabindex="0"
-  >
-    <button
-      class="close-btn"
-      aria-label="Close project details"
-      onclick="closeProject()"
-      tabindex="0"
-    >
-      ×
-    </button>
-    <h2 id="expandedTitle"></h2>
-    <p id="expandedDesc"></p>
-    <div class="gallery" id="expandedGallery" aria-live="polite"></div>
-  </div>
-
-  <script>
-    const projectsData = {
-      pahaliPazuri: {
-        title: "Pahali Pazuri",
-        description: "Granite & Quartz project at the beautiful Pahali Pazuri site, both completed and ongoing projects.",
-        images: [
-          { src: "https://via.placeholder.com/700x400?text=Pahali+Pazuri+1", alt: "Pahali Pazuri granite work 1" },
-          { src: "https://via.placeholder.com/700x400?text=Pahali+Pazuri+2", alt: "Pahali Pazuri quartz installation" }
-        ],
-      },
-      sandyShore: {
-        title: "Sandy Shore",
-        description: "Ongoing marble and granite flooring project at Sandy Shore.",
-        images: [
-          { src: "https://via.placeholder.com/700x400?text=Sandy+Shore+1", alt: "Sandy Shore marble floor" },
-          { src: "https://via.placeholder.com/700x400?text=Sandy+Shore+2", alt: "Sandy Shore granite finish" }
-        ],
-      },
-      footprints: {
-        title: "Footprints",
-        description: "Footprints luxury granite installation project.",
-        images: [
-          { src: "https://via.placeholder.com/700x400?text=Footprints+1", alt: "Footprints project image 1" }
-        ],
-      },
-      residential: { title: "Residential", description: "Various residential granite, quartz, and marble projects.", images: [] },
-      sultanPalace: { title: "Sultan Palace", description: "High-end marble applications at Sultan Palace.", images: [] },
-      petals: { title: "Petals", description: "Granite cladding and installation at Petals.", images: [] },
-      polyHeights: { title: "Poly Heights", description: "Granite and quartz projects at Poly Heights.", images: [] },
-      hyperland: { title: "Hyperland", description: "Mixed finish projects including granite and painting at Hyperland.", images: [] },
-
-      nyaliBazaar: { title: "Nyali Bazaar", description: "Painting and waterproofing projects at Nyali Bazaar.", images: [] },
-      dolphinHotel: { title: "Dolphin Hotel", description: "Professional painting and waterproofing for Dolphin Hotel.", images: [] },
-      sandyShorePaint: { title: "Sandy Shore (Painting)", description: "Painting services provided at Sandy Shore.", images: [] },
-      hyperlandPaint: { title: "Hyperland (Painting)", description: "Painting projects at Hyperland.", images: [] },
-      twigaVillas: { title: "Twiga Villas", description: "Premium painting services at Twiga Villas.", images: [] },
-      mufudhalPark: { title: "Mufudhal Park", description: "Painting and finishing works at Mufudhal Park.", images: [] },
-
-      undergroundTanks: { title: "Underground Tanks Waterproofing", description: "Waterproofing solutions for underground tanks.", images: [] },
-      terraces: { title: "Terraces Waterproofing", description: "Specialized waterproofing for terraces and balconies.", images: [] },
-      swimmingPools: { title: "Swimming Pools Waterproofing", description: "Waterproofing systems for swimming pools.", images: [] },
-      bathrooms: { title: "Bathrooms Waterproofing", description: "Waterproof coatings ideal for bathrooms.", images: [] },
-      entireBasementArea: { title: "Entire Basement Area Waterproofing", description: "Complete sealing and waterproofing of basements.", images: [] },
-
-      grainBulk: { title: "Grain Bulk", description: "Waterproofing and protection for Grain Bulk facilities.", images: [] },
-      nyaliBazaarWp: { title: "Nyali Bazaar (Waterproofing)", description: "Waterproofing project at Nyali Bazaar.", images: [] },
-      footprintsWp: { title: "Footprints (Waterproofing)", description: "Basement and surface waterproofing for Footprints.", images: [] },
-      prideInnParadiseHotel: { title: "Pride Inn Paradise Hotel", description: "Waterproofing services at Pride Inn Paradise Hotel.", images: [] },
-      sunsetParadiseHotel: { title: "Sunset Paradise Hotel", description: "Waterproofing executed at Sunset Paradise Hotel.", images: [] },
-      dolphinHotelWp: { title: "Dolphin Hotel (Waterproofing)", description: "Waterproofing specialized for Dolphin Hotel.", images: [] },
-      silverPalmResorts: { title: "Silver Palm Resorts", description: "Waterproofing projects at Silver Palm Resorts.", images: [] },
-      sandyShoreWp: { title: "Sandy Shore (Waterproofing)", description: "Waterproofing works at Sandy Shore.", images: [] },
-      superiorHomes: { title: "Superior Homes", description: "Various waterproofing solutions at Superior Homes.", images: [] },
-      pahaliPazuriWp: { title: "Pahali Pazuri (Waterproofing)", description: "Waterproofing works at Pahali Pazuri.", images: [] },
-    };
-
-    const overlay = document.getElementById("overlay");
-    const expandedProject = document.getElementById("expandedProject");
-    const expandedTitle = document.getElementById("expandedTitle");
-    const expandedDesc = document.getElementById("expandedDesc");
-    const expandedGallery = document.getElementById("expandedGallery");
-    const closeBtn = expandedProject.querySelector(".close-btn");
-
-    function openProject(key) {
-      const data = projectsData[key];
-      if (!data) return;
-
-      expandedTitle.textContent = data.title;
-      expandedDesc.textContent = data.description;
-      expandedGallery.innerHTML = "";
-
-      if (data.images.length === 0) {
-        expandedGallery.innerHTML = "<p style='font-style: italic; color: #888;'>No images available.</p>";
-      } else {
-        data.images.forEach(img => {
-          const imgElem = document.createElement("img");
-          imgElem.src = img.src;
-          imgElem.alt = img.alt;
-          imgElem.style.width = "100%";
-          imgElem.style.borderRadius = "12px";
-          imgElem.style.objectFit = "cover";
-          expandedGallery.appendChild(imgElem);
-        });
-      }
-
-      overlay.classList.add("active");
-      expandedProject.classList.add("active");
-      expandedProject.style.display = "block";
-      expandedProject.focus();
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeProject() {
-      overlay.classList.remove("active");
-      expandedProject.classList.remove("active");
-      expandedProject.style.display = "none";
-      document.body.style.overflow = "";
-    }
-
-    // Event listeners for project buttons:
-    document.querySelectorAll(".project-btn").forEach(button => {
-      button.addEventListener("click", () => {
-        openProject(button.dataset.key);
-      });
-      button.addEventListener("keydown", event => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          openProject(button.dataset.key);
-        }
-      });
-    });
-
-    overlay.addEventListener("click", closeProject);
-    closeBtn.addEventListener("click", closeProject);
-
-    // Close modal on ESC key
-    window.addEventListener("keydown", (e) => {
-      if ((e.key === "Escape") && overlay.classList.contains("active")) {
-        closeProject();
-      }
-    });
-  </script>
 </body>
 </html>
