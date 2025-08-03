@@ -33,6 +33,10 @@
       outline: 3px solid #f9d342;
       outline-offset: 2px;
     }
+    button:focus-visible {
+      outline: 3px solid #f9d342;
+      outline-offset: 2px;
+    }
     /* Header */
     .header-bar {
       display: flex;
@@ -49,7 +53,7 @@
       gap: 0.8rem;
     }
     .logo {
-      height: 52px;
+      height: 120px;
       width: auto;
       border-radius: 12px;
       box-shadow: 0 0 12px rgba(249,211,66,0.7);
@@ -172,72 +176,46 @@
       letter-spacing: 0.07em;
       font-size: 2rem;
     }
-    /* Projects Grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.4em;
-    }
-    .project-card {
-      background: #ffffff;
-      border-radius: 20px;
-      box-shadow: 0 6px 15px rgba(136, 167, 207, 0.15);
-      padding: 2em 1.8em 1.6em;
-      text-align: center;
-      cursor: pointer;
-      transition: box-shadow 0.35s ease, transform 0.35s ease;
-      user-select: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .project-card:hover,
-    .project-card:focus {
-      box-shadow: 0 15px 30px rgba(249,211,66,0.35);
-      outline: none;
-      transform: translateY(-6px);
-    }
-    .project-card img {
-      width: 95%;
-      max-width: 220px;
-      border-radius: 18px;
-      margin-bottom: 1.1em;
-      height: 140px;
-      object-fit: cover;
-      pointer-events: none;
-      user-select: none;
-      box-shadow: 0 4px 14px rgba(232, 240, 247,0.7);
-      transition: transform 0.3s ease;
-      flex-shrink: 0;
-    }
-    .project-card:hover img,
-    .project-card:focus img {
-      transform: scale(1.04);
-    }
-    .client {
-      color: #617d98;
-      font-size: 0.94em;
-      font-style: italic;
-      margin: 0.4em 0 0.9em;
-      user-select: none;
-      flex-grow: 0;
-      flex-shrink: 0;
-    }
-    .project-card h3 {
+    h3 {
       color: #244a54;
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: 1.25rem;
-      margin-bottom: 0.5em;
-      flex-grow: 0;
-      flex-shrink: 0;
+      margin-bottom: 0.6em;
+      font-size: 1.4rem;
     }
-    .project-card p {
-      color: #5a6c7c;
-      font-size: 1em;
-      line-height: 1.35;
-      margin: 0;
-      flex-grow: 1;
+    /* Project groups */
+    .project-group {
+      margin-bottom: 2.8em;
+    }
+    .project-group ul {
+      list-style: none;
+      padding-left: 0;
+      margin-left: 1.2em;
+    }
+    .project-group ul li {
+      margin: 0.4em 0;
+    }
+    /* Project buttons */
+    .project-btn {
+      background: none;
+      border: none;
+      color: #336699;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.25em 0.2em;
+      border-radius: 10px;
+      transition: background-color 0.25s, color 0.25s;
+      user-select: none;
+      text-align: left;
+      width: 100%;
+      max-width: 320px;
+    }
+    .project-btn:hover,
+    .project-btn:focus {
+      background-color: #f9d342;
+      color: #244a54;
+      outline: none;
     }
     /* Overlay & Expanded project */
     #overlay {
@@ -290,6 +268,7 @@
       font-size: 1.05rem;
       line-height: 1.6;
       margin-bottom: 1.2em;
+      white-space: pre-line;
     }
     #expandedProject #expandedClient {
       font-style: italic;
@@ -399,101 +378,69 @@
       line-height: 1.75;
       border: 1.5px solid #f9d342aa;
     }
-    /* Contact */
-    #contact form {
-      max-width: 520px;
-      margin: 0 auto;
-      background: #ffffff;
-      padding: 2.6em 2.4em 2.6em;
-      border-radius: 24px;
-      box-shadow: 0 15px 40px rgba(249,211,66,0.25);
-      display: flex;
-      flex-direction: column;
-      gap: 1.5em;
+
+    /* Business card styles (replace contact with this) */
+    .business-card {
+      width: 400px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #000000 60%, #f1c40f 40%);
+      color: white;
+      padding: 24px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      font-family: Arial, sans-serif;
+      margin: 2em auto 0 auto;
+      outline-offset: 3px;
     }
-    #contact label {
-      font-weight: 700;
-      margin-bottom: 0.4em;
-      color: #244a54;
-      user-select: none;
-      font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
+    .business-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100%;
+      background: #2ecc71;
+      transform: skewX(-30deg);
+      transform-origin: top right;
     }
-    #contact input,
-    #contact textarea {
-      padding: 1em 1.2em;
-      border: 1.8px solid #f9d342cc;
-      border-radius: 20px;
-      font-size: 1rem;
-      font-family: 'Nunito', sans-serif;
-      resize: vertical;
-      transition: border-color 0.3s ease;
-      box-shadow: inset 0 2px 5px #fcf5b9cc;
+    .business-card h1,
+    .business-card h2,
+    .business-card p {
+      margin: 0;
+      z-index: 1;
+      position: relative;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-    #contact input:focus,
-    #contact textarea:focus {
-      border-color: #f9d342;
-      outline: none;
-      box-shadow: 0 0 12px #f9d342bb;
-      background-color: #fffbee;
+    .business-card h1:hover,
+    .business-card h2:hover,
+    .business-card p:hover {
+      color: #ffe600;
+      text-shadow: 0 0 6px rgba(255, 230, 0, 0.6);
     }
-    #contact textarea {
-      min-height: 110px;
+    .business-card h1 {
+      color: #f1c40f;
+      font-size: 28px;
     }
-    #contact button {
-      background: #f9d342;
-      color: #244a54;
-      padding: 1.1em 0;
-      font-weight: 700;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 28px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-      user-select: none;
-      box-shadow: 0 8px 18px rgba(249,211,66,0.6);
-      min-width: 180px;
-      align-self: center;
+    .business-card h2 {
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: normal;
+      margin: 10px 0 20px;
     }
-    #contact button:hover,
-    #contact button:focus {
-      background: #f7c600;
-      box-shadow: 0 14px 40px rgba(249,211,66,0.85);
-      outline: none;
+    .business-card .name {
+      font-weight: bold;
+      margin-top: 20px;
     }
-    #contact .contact-info {
-      text-align: center;
-      margin-top: 2.3em;
-      font-size: 1.1em;
-      color: #3e4d5e;
-      user-select: none;
-      font-family: 'Nunito', sans-serif;
+    .business-card .contact {
+      margin-top: 4px;
+      font-size: 14px;
     }
-    #contact .contact-info a {
-      color: #28a745;
-      font-weight: 600;
-      margin-left: 0.5em;
-      text-decoration: none;
-      transition: text-decoration 0.25s ease;
-    }
-    #contact .contact-info a:hover,
-    #contact .contact-info a:focus {
-      text-decoration: underline;
-      outline: none;
-    }
-    footer {
-      background: #f9d342;
-      color: #244a54;
-      text-align: center;
-      font-weight: 700;
-      padding: 1.6rem 1rem;
-      font-size: 0.95rem;
-      font-family: 'Poppins', sans-serif;
-      box-shadow: 0 -3px 10px rgba(249,211,66,0.8);
-      border-radius: 24px 24px 0 0;
-      margin-top: auto;
-      user-select: none;
+    .business-card .website {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #f1c40f;
     }
     /* Responsive */
     @media (max-width: 900px) {
@@ -543,19 +490,13 @@
         font-size: 1.2em;
         min-width: auto;
       }
-      #contact form {
-        padding: 2em 1.5em 2.2em;
+      .business-card {
+        width: 90vw;
+        max-width: 400px;
+        margin: 1.5em auto 0 auto;
       }
-      #contact input, #contact textarea {
-        font-size: 0.95rem;
-      }
-      #contact button {
-        font-size: 1.15em;
-        min-width: auto;
-        align-self: stretch;
-      }
-      .project-card {
-        padding: 1.6em 1.2em 1.2em;
+      .project-btn {
+        max-width: 100%;
       }
       .logo {
         height: 72px;
@@ -577,7 +518,7 @@
           <li><a href="#projects" class="active" tabindex="0">Projects</a></li>
           <li><a href="#services" tabindex="0">Services</a></li>
           <li><a href="#about" tabindex="0">About</a></li>
-          <li><a href="#contact" tabindex="0">Contact</a></li>
+          <!-- Contact navigation removed since section replaced -->
         </ul>
       </nav>
     </div>
@@ -587,7 +528,7 @@
     <div class="hero-content">
       <h1>Trusted Experts in Paint, Waterproofing & Granite Application</h1>
       <p>Delivering excellence and durability to every project for over 10 years.</p>
-      <a href="#contact" class="btn-main" role="button" tabindex="0">Request a Quote</a>
+      <a href="#projects" class="btn-main" role="button" tabindex="0">View Projects</a>
     </div>
   </section>
 
@@ -595,83 +536,55 @@
     <!-- Projects -->
     <section id="projects" tabindex="-1" aria-label="Our Projects">
       <h2>Our Projects</h2>
-      <div class="projects-grid" role="list">
-        <div
-          class="project-card"
-          data-key="paint"
-          tabindex="0"
-          role="listitem button"
-          aria-pressed="false"
-          aria-label="View details of Exterior Paint Renovation project"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80"
-            alt="Exterior Paint Renovation"
-            loading="lazy"
-          />
-          <div class="client">Client: Shree Plaza Apartments</div>
-          <h3>Exterior Paint Renovation</h3>
-          <p>
-            Revamping building exteriors with high-quality, weather-resistant paints.
-          </p>
-        </div>
-        <div
-          class="project-card"
-          data-key="waterproofing"
-          tabindex="0"
-          role="listitem button"
-          aria-pressed="false"
-          aria-label="View details of Basement Waterproofing project"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80"
-            alt="Basement Waterproofing"
-            loading="lazy"
-          />
-          <div class="client">Client: Vijay Construction</div>
-          <h3>Basement Waterproofing</h3>
-          <p>
-            Advanced solutions for leakage and damp prevention in basements.
-          </p>
-        </div>
-        <div
-          class="project-card"
-          data-key="granite"
-          tabindex="0"
-          role="listitem button"
-          aria-pressed="false"
-          aria-label="View details of Granite Floor Application project"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=400&q=80"
-            alt="Granite Floor Application"
-            loading="lazy"
-          />
-          <div class="client">Client: City Mall</div>
-          <h3>Granite Floor Application</h3>
-          <p>
-            Premium quality granite installation for commercial and residential projects.
-          </p>
-        </div>
-        <div
-          class="project-card"
-          data-key="application"
-          tabindex="0"
-          role="listitem button"
-          aria-pressed="false"
-          aria-label="View details of Industrial Coating Application project"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1549921296-a0108577e609?auto=format&fit=crop&w=400&q=80"
-            alt="Industrial Coating Application"
-            loading="lazy"
-          />
-          <div class="client">Client: DVS Engineering</div>
-          <h3>Industrial Coating Application</h3>
-          <p>
-            Protective coatings for machinery and structures for durability.
-          </p>
-        </div>
+
+      <!-- Granite, Quartz & Marble -->
+      <div class="project-group">
+        <h3>Granite, Quartz, & Marble Projects (Done & Ongoing)</h3>
+        <ul>
+          <li><button class="project-btn" data-key="pahaliPazuri">Pahali Pazuri</button></li>
+          <li><button class="project-btn" data-key="sandyShore">Sandy Shore</button></li>
+          <li><button class="project-btn" data-key="footprints">Footprints</button></li>
+          <li><button class="project-btn" data-key="residential">Residential</button></li>
+          <li><button class="project-btn" data-key="sultanPalace">Sultan Palace</button></li>
+          <li><button class="project-btn" data-key="petals">Petals</button></li>
+          <li><button class="project-btn" data-key="polyHeights">Poly Heights</button></li>
+          <li><button class="project-btn" data-key="hyperland">Hyperland</button></li>
+        </ul>
+      </div>
+
+      <!-- Painting -->
+      <div class="project-group">
+        <h3>Painting Projects</h3>
+        <ul>
+          <li><button class="project-btn" data-key="nyaliBazaar">Nyali Bazaar</button></li>
+          <li><button class="project-btn" data-key="dolphinHotel">Dolphin Hotel</button></li>
+          <li><button class="project-btn" data-key="sandyShorePaint">Sandy Shore</button></li>
+          <li><button class="project-btn" data-key="hyperlandPaint">Hyperland</button></li>
+          <li><button class="project-btn" data-key="twigaVillas">Twiga Villas</button></li>
+          <li><button class="project-btn" data-key="mufudhalPark">Mufudhal Park</button></li>
+        </ul>
+      </div>
+
+      <!-- Waterproofing -->
+      <div class="project-group">
+        <h3>Waterproofing Projects</h3>
+        <ul>
+          <li><button class="project-btn" data-key="undergroundTanks">Underground Tanks</button></li>
+          <li><button class="project-btn" data-key="terraces">Terraces</button></li>
+          <li><button class="project-btn" data-key="swimmingPools">Swimming Pools</button></li>
+          <li><button class="project-btn" data-key="bathrooms">Bathrooms</button></li>
+          <li><button class="project-btn" data-key="entireBasementArea">Entire Basement Area</button></li>
+          <li><button class="project-btn" data-key="grainBulk">Grain Bulk</button></li>
+          <li><button class="project-btn" data-key="nyaliBazaarWp">Nyali Bazaar</button></li>
+          <li><button class="project-btn" data-key="footprintsWp">Footprints</button></li>
+          <li><button class="project-btn" data-key="prideInnParadiseHotel">Pride Inn Paradise Hotel</button></li>
+          <li><button class="project-btn" data-key="sunsetParadiseHotel">Sunset Paradise Hotel</button></li>
+          <li><button class="project-btn" data-key="dolphinHotelWp">Dolphin Hotel</button></li>
+          <li><button class="project-btn" data-key="silverPalmResorts">Silver Palm Resorts</button></li>
+          <li><button class="project-btn" data-key="sandyShoreWp">Sandy Shore</button></li>
+          <li><button class="project-btn" data-key="superiorHomes">Superior Homes</button></li>
+          <li><button class="project-btn" data-key="pahaliPazuriWp">Pahali Pazuri</button></li>
+        </ul>
       </div>
     </section>
 
@@ -731,43 +644,14 @@
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" tabindex="-1" aria-label="Contact Us">
-      <h2>Contact Us</h2>
-      <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required autocomplete="name" />
-
-        <label for="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          autocomplete="email"
-        />
-
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-
-        <button type="submit">Send Message</button>
-      </form>
-      <div class="contact-info" tabindex="0" aria-label="Contact information">
-        Email:
-        <a href="mailto:jigar555@hotmail.com"
-          >jigar555@hotmail.com</a
-        >
-        |
-        <a href="tel:+254728777089">0728 777 089</a> |
-        <a
-          href="https://wa.me/254728777089"
-          target="_blank"
-          rel="noopener"
-          aria-label="WhatsApp contact"
-          >WhatsApp &#x1F4F2;</a
-        >
-      </div>
-    </section>
+    <!-- Business Card replacing Contact -->
+    <div class="business-card" tabindex="0" aria-label="Business card for Juhu Enterprise">
+      <h1>Juhu Enterprise</h1>
+      <h2>Specialised in: Applying & Supplying of<br>Paint / Granite & Waterproofing</h2>
+      <p class="name">Jigar Patel</p>
+      <p class="contact">0728 777 089<br>Mombasa</p>
+      <p class="website" aria-label="Website">🌐 juhuenterprise.com</p>
+    </div>
   </main>
 
   <footer>
@@ -793,120 +677,98 @@
       ×
     </button>
     <h2 id="expandedTitle"></h2>
-    <p id="expandedClient"></p>
     <p id="expandedDesc"></p>
     <div class="gallery" id="expandedGallery" aria-live="polite"></div>
   </div>
 
   <script>
     const projectsData = {
-      paint: {
-        title: "Exterior Paint Renovation",
-        client: "Shree Plaza Apartments",
-        description:
-          "The project involved revamping the exterior of Shree Plaza Apartments with premium weather-resistant paints. Our skilled team ensured surface preparation, priming, and multiple finishing coats to guarantee durability and aesthetics. The renovation transformed the building's appearance and protected it from harsh weather, extending the lifespan of the facade.",
+      pahaliPazuri: {
+        title: "Pahali Pazuri",
+        description: "Granite & Quartz project at the beautiful Pahali Pazuri site, both completed and ongoing projects.",
         images: [
-          {
-            src: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=700&q=80",
-            alt: "Before paint: Building exterior before renovation",
-          },
-          {
-            src: "https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=700&q=80",
-            alt: "During paint: Workers applying primer coat",
-          },
-          {
-            src: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=700&q=80",
-            alt: "After paint: Freshly painted facade",
-          },
+          { src: "https://via.placeholder.com/700x400?text=Pahali+Pazuri+1", alt: "Pahali Pazuri granite work 1" },
+          { src: "https://via.placeholder.com/700x400?text=Pahali+Pazuri+2", alt: "Pahali Pazuri quartz installation" }
         ],
       },
-      waterproofing: {
-        title: "Basement Waterproofing",
-        client: "Vijay Construction",
-        description:
-          "Advanced waterproofing solutions to prevent leakage and dampness issues in basements. We used modern membranes and coatings to ensure complete sealing, improving durability and safety of the basement structures.",
+      sandyShore: {
+        title: "Sandy Shore",
+        description: "Ongoing marble and granite flooring project at Sandy Shore.",
         images: [
-          {
-            src: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=700&q=80",
-            alt: "Before waterproofing: Damp-prone basement wall",
-          },
-          {
-            src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80",
-            alt: "During waterproofing: Applying waterproofing membrane",
-          },
-          {
-            src: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=700&q=80",
-            alt: "After waterproofing: Dry, sealed basement wall",
-          },
+          { src: "https://via.placeholder.com/700x400?text=Sandy+Shore+1", alt: "Sandy Shore marble floor" },
+          { src: "https://via.placeholder.com/700x400?text=Sandy+Shore+2", alt: "Sandy Shore granite finish" }
         ],
       },
-      granite: {
-        title: "Granite Floor Application",
-        client: "City Mall",
-        description:
-          "Premium granite flooring installation, ensuring high durability and aesthetic appeal for both commercial and residential projects. Our team handled the precision cutting, placement, and finishing to meet client expectations.",
+      footprints: {
+        title: "Footprints",
+        description: "Footprints luxury granite installation project.",
         images: [
-          {
-            src: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=700&q=80",
-            alt: "Before granite: Old flooring before installation",
-          },
-          {
-            src: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=700&q=80",
-            alt: "During granite: Setting granite slabs",
-          },
-          {
-            src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80",
-            alt: "After granite: Finished granite flooring",
-          },
+          { src: "https://via.placeholder.com/700x400?text=Footprints+1", alt: "Footprints project image 1" }
         ],
       },
-      application: {
-        title: "Industrial Coating Application",
-        client: "DVS Engineering",
-        description:
-          "Application of protective industrial coatings for machinery and structural elements to increase durability and resist corrosion. The coatings applied extend equipment lifespan and reduce maintenance costs.",
-        images: [
-          {
-            src: "https://images.unsplash.com/photo-1549921296-a0108577e609?auto=format&fit=crop&w=700&q=80",
-            alt: "Before coating: Machinery surfaces before application",
-          },
-          {
-            src: "https://images.unsplash.com/photo-1465101178521-c1a4c8a2540d?auto=format&fit=crop&w=700&q=80",
-            alt: "During coating: Technicians applying protective coatings",
-          },
-          {
-            src: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=700&q=80",
-            alt: "After coating: Durable corrosion-resistant finishes",
-          },
-        ],
-      },
+      residential: { title: "Residential", description: "Various residential granite, quartz, and marble projects.", images: [] },
+      sultanPalace: { title: "Sultan Palace", description: "High-end marble applications at Sultan Palace.", images: [] },
+      petals: { title: "Petals", description: "Granite cladding and installation at Petals.", images: [] },
+      polyHeights: { title: "Poly Heights", description: "Granite and quartz projects at Poly Heights.", images: [] },
+      hyperland: { title: "Hyperland", description: "Mixed finish projects including granite and painting at Hyperland.", images: [] },
+
+      nyaliBazaar: { title: "Nyali Bazaar", description: "Painting and waterproofing projects at Nyali Bazaar.", images: [] },
+      dolphinHotel: { title: "Dolphin Hotel", description: "Professional painting and waterproofing for Dolphin Hotel.", images: [] },
+      sandyShorePaint: { title: "Sandy Shore (Painting)", description: "Painting services provided at Sandy Shore.", images: [] },
+      hyperlandPaint: { title: "Hyperland (Painting)", description: "Painting projects at Hyperland.", images: [] },
+      twigaVillas: { title: "Twiga Villas", description: "Premium painting services at Twiga Villas.", images: [] },
+      mufudhalPark: { title: "Mufudhal Park", description: "Painting and finishing works at Mufudhal Park.", images: [] },
+
+      undergroundTanks: { title: "Underground Tanks Waterproofing", description: "Waterproofing solutions for underground tanks.", images: [] },
+      terraces: { title: "Terraces Waterproofing", description: "Specialized waterproofing for terraces and balconies.", images: [] },
+      swimmingPools: { title: "Swimming Pools Waterproofing", description: "Waterproofing systems for swimming pools.", images: [] },
+      bathrooms: { title: "Bathrooms Waterproofing", description: "Waterproof coatings ideal for bathrooms.", images: [] },
+      entireBasementArea: { title: "Entire Basement Area Waterproofing", description: "Complete sealing and waterproofing of basements.", images: [] },
+
+      grainBulk: { title: "Grain Bulk", description: "Waterproofing and protection for Grain Bulk facilities.", images: [] },
+      nyaliBazaarWp: { title: "Nyali Bazaar (Waterproofing)", description: "Waterproofing project at Nyali Bazaar.", images: [] },
+      footprintsWp: { title: "Footprints (Waterproofing)", description: "Basement and surface waterproofing for Footprints.", images: [] },
+      prideInnParadiseHotel: { title: "Pride Inn Paradise Hotel", description: "Waterproofing services at Pride Inn Paradise Hotel.", images: [] },
+      sunsetParadiseHotel: { title: "Sunset Paradise Hotel", description: "Waterproofing executed at Sunset Paradise Hotel.", images: [] },
+      dolphinHotelWp: { title: "Dolphin Hotel (Waterproofing)", description: "Waterproofing specialized for Dolphin Hotel.", images: [] },
+      silverPalmResorts: { title: "Silver Palm Resorts", description: "Waterproofing projects at Silver Palm Resorts.", images: [] },
+      sandyShoreWp: { title: "Sandy Shore (Waterproofing)", description: "Waterproofing works at Sandy Shore.", images: [] },
+      superiorHomes: { title: "Superior Homes", description: "Various waterproofing solutions at Superior Homes.", images: [] },
+      pahaliPazuriWp: { title: "Pahali Pazuri (Waterproofing)", description: "Waterproofing works at Pahali Pazuri.", images: [] },
     };
 
     const overlay = document.getElementById("overlay");
     const expandedProject = document.getElementById("expandedProject");
     const expandedTitle = document.getElementById("expandedTitle");
-    const expandedClient = document.getElementById("expandedClient");
     const expandedDesc = document.getElementById("expandedDesc");
     const expandedGallery = document.getElementById("expandedGallery");
+    const closeBtn = expandedProject.querySelector(".close-btn");
 
     function openProject(key) {
       const data = projectsData[key];
       if (!data) return;
 
       expandedTitle.textContent = data.title;
-      expandedClient.textContent = "Client: " + data.client;
       expandedDesc.textContent = data.description;
       expandedGallery.innerHTML = "";
 
-      data.images.forEach((img) => {
-        const imageElem = document.createElement("img");
-        imageElem.src = img.src;
-        imageElem.alt = img.alt;
-        expandedGallery.appendChild(imageElem);
-      });
+      if (data.images.length === 0) {
+        expandedGallery.innerHTML = "<p style='font-style: italic; color: #888;'>No images available.</p>";
+      } else {
+        data.images.forEach(img => {
+          const imgElem = document.createElement("img");
+          imgElem.src = img.src;
+          imgElem.alt = img.alt;
+          imgElem.style.width = "100%";
+          imgElem.style.borderRadius = "12px";
+          imgElem.style.objectFit = "cover";
+          expandedGallery.appendChild(imgElem);
+        });
+      }
 
       overlay.classList.add("active");
       expandedProject.classList.add("active");
+      expandedProject.style.display = "block";
       expandedProject.focus();
       document.body.style.overflow = "hidden";
     }
@@ -914,39 +776,32 @@
     function closeProject() {
       overlay.classList.remove("active");
       expandedProject.classList.remove("active");
+      expandedProject.style.display = "none";
       document.body.style.overflow = "";
     }
 
-    // Attach click and keyboard events to project cards
-    document.querySelectorAll(".project-card").forEach((card) => {
-      card.addEventListener("click", () => openProject(card.getAttribute("data-key")));
-      card.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openProject(card.getAttribute("data-key"));
+    // Event listeners for project buttons:
+    document.querySelectorAll(".project-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        openProject(button.dataset.key);
+      });
+      button.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openProject(button.dataset.key);
         }
       });
     });
 
     overlay.addEventListener("click", closeProject);
+    closeBtn.addEventListener("click", closeProject);
 
-    // Close expanded view on ESC key
+    // Close modal on ESC key
     window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && expandedProject.classList.contains("active")) {
+      if ((e.key === "Escape") && overlay.classList.contains("active")) {
         closeProject();
       }
-    });
-
-    // Simple form submission handling (demo only)
-    const form = document.querySelector("#contact form");
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      alert("Thank you for your message! We will get back to you soon.");
-      form.reset();
     });
   </script>
 </body>
 </html>
-
-
-
