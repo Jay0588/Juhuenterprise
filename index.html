@@ -381,89 +381,62 @@
       user-select: none;
     }
     /* Responsive */
-    @media (max-width: 900px) {
-      nav ul {
-        max-width: 100%;
-        justify-content: center;
-      }
-      .header-bar {
-        justify-content: space-around;
-      }
-      .services-list {
-        flex-direction: column;
-        gap: 2.7em;
-      }
-      .project-images {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      }
-    }
-    @media (max-width: 600px) {
-  nav ul li {
-    display: block;
-    margin: 0.75em 0;
+   @media (max-width: 900px) {
+  .professional-hero {
+    min-height: 320px;
+    padding: 0 1rem;
   }
-  .header-bar {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.7em;
-    padding: 1.2em 1em;
-    border-radius: 0 0 20px 20px;
-  }
-  main {
-    padding: 1.5em 1em 3.5em;
+  .hero-content {
+    max-width: 100%;
   }
   .hero-content h1 {
-    font-size: 1.35rem;
+    font-size: 2.4rem;
+    margin-bottom: 0.8em;
   }
- .hero-content p {
-  font-size: 0.649375em;
-}
-
+  .hero-content p {
+    font-size: 1.1rem;
+    max-width: 90%;
+    margin-bottom: 2em;
+  }
   .btn-main {
-  padding: 0.95em 3em;
-  background: #f9d342;
-  color: #244a54;
-  border: none;
-  border-radius: 28px;
-  font-size: 1.25em;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 6px 12px rgba(249,211,66,0.6);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-  user-select: none;
-  display: inline-block;
-  min-width: 220px;
-  margin-top: 2cm; /* Added margin to move down */
-}
-
-  .business-card {
-    width: 90vw;
-    max-width: 400px;
-    margin: 1.5em auto 0 auto;
+    padding: 1em 3.2em;
+    font-size: 1.15rem;
+    min-width: 200px;
+    margin-top: 2.5cm; /* you can adjust this */
   }
-  .logo {
-    height: 72px;
-  }
-
-  #projects .project-images img {
-    width: 242px;
-    height: 140px;
-    object-fit: cover;
-  }
-
-  .professional-hero {
-    height: 50vh;        /* half the viewport height */
-    min-height: 200px;   /* optional minimum height */
-  }
-
   .carousel {
-    width: 100vw;
-    height: 80vw; /* roughly maintain aspect ratio */
+    height: 320px;
   }
   .carousel-slide {
-    width: 100vw;
-    height: 80vw;
+    height: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .professional-hero {
+    min-height: 240px;
+    padding: 0 1rem;
+  }
+  .hero-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.75em;
+  }
+  .hero-content p {
+    font-size: 0.9rem;
+    max-width: 90%;
+    margin-bottom: 2.5em;
+  }
+  .btn-main {
+    padding: 0.9em 2.8em;
+    font-size: 1rem;
+    min-width: 160px;
+    margin-top: 2cm; /* adjust slightly smaller for smaller screen */
+  }
+  .carousel {
+    height: 240px;
+  }
+  .carousel-slide {
+    height: 240px;
   }
 }
 
@@ -671,6 +644,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
