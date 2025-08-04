@@ -418,11 +418,13 @@
     font-size: 0.649375rem;
   }
   .btn-main {
-    width: 60%;
-    padding: 1.1em 0;
-    font-size: 0.8em;
-    min-width: auto;
-  }
+  width: 90%;           /* a bit narrower */
+  padding: 0.8em 0;     /* less padding */
+  font-size: 1rem;      /* slightly smaller font */
+  min-width: auto;
+  margin: 0 auto;       /* center the button */
+  display: block;
+}
   .business-card {
     width: 90vw;
     max-width: 400px;
@@ -432,13 +434,15 @@
     height: 72px;
   }
 
+  #projects .project-images img {
+    width: 242px;
+    height: 140px;
+    object-fit: cover;
+  }
+
   .professional-hero {
-    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=600&q=80');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 250px; /* adjust height as needed */
-    min-height: 200px;   /* optional minimum height */ 
+    height: 50vh;        /* half the viewport height */
+    min-height: 200px;   /* optional minimum height */
   }
 }
 
@@ -458,13 +462,28 @@
     </div>
   </header>
 
-  <section class="professional-hero" role="banner">
-    <div class="hero-content">
-      <h1>Trusted Experts in Paint, Waterproofing & Granite Application</h1>
-      <p>Delivering excellence and durability to every project for over 10 years.</p>
-      <a href="#projects" class="btn-main" role="button" tabindex="0">View Projects</a>
+  <section class="professional-hero" role="banner" style="position: relative; overflow: hidden;">
+  <!-- Carousel container fills hero absolutely behind text -->
+  <div class="carousel" aria-live="polite" aria-atomic="true" role="region"
+       style="position: absolute; top:0; left:0; width:100%; height:100%; border-radius:24px; overflow:hidden; z-index:1;">
+    <img src="https://i.ibb.co/3yYqkq4G/pahali-pazuri.jpg" alt="Pahali Pazuri granite and quartz work" class="carousel-slide active" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:1; transition: opacity 1s ease-in-out; border-radius:24px;"/>
+    <img src="https://i.ibb.co/9kPPR0Nj/paazurii.jpg" alt="Additional Pahali image" class="carousel-slide" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0; transition: opacity 1s ease-in-out; border-radius:24px;" />
+    <img src="https://i.ibb.co/wZbNbgw9/sandy-shore-aft.jpg" alt="Additional Pahali image" class="carousel-slide" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0; transition: opacity 1s ease-in-out; border-radius:24px;" />
+    <img src="https://i.ibb.co/7HjhpnW/IMG-20250803-WA0011.jpg" alt="Additional Pahali image" class="carousel-slide" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0; transition: opacity 1s ease-in-out; border-radius:24px;" />
+    <img src="https://i.ibb.co/8Lf9rStb/nyali-baazar-paintwork.jpg" alt="Additional Pahali image" class="carousel-slide" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0; transition: opacity 1s ease-in-out; border-radius:24px;" />
+
+	
+	
+	<!-- Add other images as needed -->
+  </div>
+
+  <!-- Your original hero content stays above -->
+  <div class="hero-content" style="position: relative; z-index: 10;">
+    <h1>Trusted Experts in Paint, Waterproofing & Granite Application</h1>
+    <p>Delivering excellence and durability to every project for over 10 years.</p>
+    <a href="#projects" class="btn-main" role="button" tabindex="0">View Projects</a>
     </div>
-  </section>
+    </section>
 
   <main>
     <section id="projects" tabindex="-1" aria-label="Our Projects">
@@ -603,20 +622,34 @@
       <p class="website" aria-label="Website">🌐 juhuenterprise.com</p>
     </div>
   </main>
+  <script>
+  (function() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.opacity = (i === index) ? '1' : '0';
+        slide.classList.toggle('active', i === index);
+      });
+      currentIndex = index;
+    }
+
+    function showNext() {
+      const nextIndex = (currentIndex + 1) % slides.length;
+      showSlide(nextIndex);
+    }
+
+    showSlide(0);
+    setInterval(showNext, 4000);
+  })();
+</script>
 
   <footer>
     &copy; 2025 Juhu Enterprise. All rights reserved.
   </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
 
