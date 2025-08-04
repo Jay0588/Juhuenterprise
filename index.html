@@ -102,7 +102,7 @@
           rgba(232,240,247,0.85),
           rgba(232,240,247,0.85)
         ),
-        url()
+        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=1500&q=80')
           center/cover no-repeat;
       padding: 0 20px;
       margin-bottom: 3.5em;
@@ -432,16 +432,6 @@
         height: 72px;
       }
 	  
-	  .professional-hero {
-    min-height: 280px; /* Reduce height for mobile */
-    padding: 15px; /* Adjust padding for smaller screen */
-  }
-  .carousel-slide {
-    width: 100%; /* Make images fit container width */
-    height: auto; /* Adjust height automatically */
-    max-height: 300px; /* Limit max height on mobile */
-  }
-	  
 	  #projects .project-images img {
   width: 242px;
   height: 140px;
@@ -465,34 +455,13 @@
     </div>
   </header>
 
-  <section class="professional-hero" role="banner" style="position: relative; overflow: hidden;">
-  <!-- Carousel container -->
-  <div class="carousel" aria-live="polite" aria-atomic="true" role="region"
-       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; border-radius: 24px; overflow: hidden;">
-    <img src="https://i.ibb.co/3yYqkq4G/pahali-pazuri.jpg" alt="Pahali Pazuri granite and quartz work" class="carousel-slide active" style="width: 1000px; height: 840px; object-fit: cover; position: absolute; top: 0; left:0; transition: opacity 1s ease-in-out;" />
-    <img src="https://i.ibb.co/9kPPR0Nj/paazurii.jpg" alt="Pahali additional" class="carousel-slide" style="width: 1000px; height: 840px; object-fit: cover; position: absolute; top: 0; left:0; opacity: 0; transition: opacity 1s ease-in-out;" />
-	<img src="https://i.ibb.co/0yKxHvDC/Sandy-Shore-bfr.jpg" alt="Pahali additional" class="carousel-slide" style="width: 1000px; height: 840px; object-fit: cover; position: absolute; top: 0; left:0; opacity: 0; transition: opacity 1s ease-in-out;" />
-	<img src="https://i.ibb.co/3ygdRHB7/IMG-20250803-WA0005.jpg" alt="Pahali additional" class="carousel-slide" style="width: 1000px; height: 840px; object-fit: cover; position: absolute; top: 0; left:0; opacity: 0; transition: opacity 1s ease-in-out;" />
-	<img src="https://i.ibb.co/YT7BtrYH/Nyali-Baazar.jpg" alt="Pahali additional" class="carousel-slide" style="width: 1000px; height: 840px; object-fit: cover; position: absolute; top: 0; left:0; opacity: 0; transition: opacity 1s ease-in-out;" />
-    
-	
-	
-	
-	
-	
-	<!-- Add additional images for your projects similarly -->
-  </div>
-
-  <!-- Your existing hero content -->
-  <div class="hero-content" style="position: relative; z-index: 10;">
-    <h1>Trusted Experts in Paint, Waterproofing & Granite Application</h1>
-    <p>Delivering excellence and durability to every project for over 10 years.</p>
-    <a href="#projects" class="btn-main" role="button" tabindex="0">View Projects</a>
-  </div>
-</section>
-
-  
- 
+  <section class="professional-hero" role="banner">
+    <div class="hero-content">
+      <h1>Trusted Experts in Paint, Waterproofing & Granite Application</h1>
+      <p>Delivering excellence and durability to every project for over 10 years.</p>
+      <a href="#projects" class="btn-main" role="button" tabindex="0">View Projects</a>
+    </div>
+  </section>
 
   <main>
     <section id="projects" tabindex="-1" aria-label="Our Projects">
@@ -503,7 +472,7 @@
         <p class="project-summary">Granite & Quartz project at the beautiful Pahali Pazuri site, both completed and ongoing projects.</p>
         <div class="project-images single-image" aria-label="Pahali Pazuri images">
           <img src="https://i.ibb.co/3yYqkq4G/pahali-pazuri.jpg" alt="Pahali Pazuri granite and quartz work" style="width:328px; height:140px; object-fit:cover;"/>
-		  <a href="https://ibb.co/xqSgHmvT"><img src="https://i.ibb.co/xqSgHmvT/Whats-App-Image-2025-08-03-at-09-07-59-c13d7721.png" alt="Whats-App-Image-2025-08-03-at-09-07-59-c13d7721" border="0"></a>
+	  <img src="https://i.ibb.co/9kPPR0Nj/paazurii.jpg" alt="paazurii" style="width:328px; height:140px; object-fit:cover;"/>	
         </div>
       </details>
 
@@ -635,29 +604,8 @@
   <footer>
     &copy; 2025 Juhu Enterprise. All rights reserved.
   </footer>
-  
-  <script>
-  (function() {
-    const slides = document.querySelectorAll('.carousel-slide');
-    let currentIndex = 0;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.style.opacity = i === index ? '1' : '0';
-        slide.classList.toggle('active', i === index);
-      });
-      currentIndex = index;
-    }
-
-    function showNext() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }
-
-    showSlide(0);
-    setInterval(showNext, 4000);
-  })();
-</script>
-
 </body>
 </html>
+
+
+
