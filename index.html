@@ -397,48 +397,54 @@
       }
     }
     @media (max-width: 600px) {
-      nav ul li {
-        display: block;
-        margin: 0.75em 0;
-      }
-      .header-bar {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.7em;
-        padding: 1.2em 1em;
-        border-radius: 0 0 20px 20px;
-      }
-      main {
-        padding: 1.5em 1em 3.5em;
-      }
-      .hero-content h1 {
-        font-size: 2.4rem;
-      }
-      .hero-content p {
-        font-size: 1.15rem;
-      }
-      .btn-main {
-        width: 100%;
-        padding: 1.1em 0;
-        font-size: 1.2em;
-        min-width: auto;
-      }
-      .business-card {
-        width: 90vw;
-        max-width: 400px;
-        margin: 1.5em auto 0 auto;
-      }
-      .logo {
-        height: 72px;
-      }
-	  
-	  #projects .project-images img {
-  width: 242px;
-  height: 140px;
-  object-fit: cover; /* ensures the image fills the box without distortion, cropping as needed */
+  nav ul li {
+    display: block;
+    margin: 0.75em 0;
+  }
+  .header-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7em;
+    padding: 1.2em 1em;
+    border-radius: 0 0 20px 20px;
+  }
+  main {
+    padding: 1.5em 1em 3.5em;
+  }
+  .hero-content h1 {
+    font-size: 2.4rem;
+  }
+  .hero-content p {
+    font-size: 1.15rem;
+  }
+  .btn-main {
+    width: 100%;
+    padding: 1.1em 0;
+    font-size: 1.2em;
+    min-width: auto;
+  }
+  .business-card {
+    width: 90vw;
+    max-width: 400px;
+    margin: 1.5em auto 0 auto;
+  }
+  .logo {
+    height: 72px;
+  }
+
+  #projects .project-images img {
+    width: 242px;
+    height: 140px;
+    object-fit: cover;
+  }
+
+  /* New code to make hero half size on phone */
+  .hero {
+    height: 50vh;        /* half the viewport height */
+    min-height: 200px;   /* optional minimum height */
+  }
 }
 
-    }
   </style>
 </head>
 <body>
@@ -606,6 +612,3 @@
   </footer>
 </body>
 </html>
-
-
-
