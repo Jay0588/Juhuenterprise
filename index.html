@@ -990,8 +990,8 @@ form.addEventListener('submit', function(e) {
       successMessage.classList.remove('hidden'); // show success message
       form.reset(); // clear form
       window.scrollTo({ top: form.offsetTop - 20, behavior: 'smooth' }); // scroll to message
-    }, (err) => {
-      alert('Error sending form: ' + JSON.stringify(err));
+    }, (error) => {
+      alert('Error sending form: ' + JSON.stringify(error));
     });
 });
 </script>
@@ -1202,4 +1202,5 @@ a:hover {
     </div>
   </body></html>
   
+
 
